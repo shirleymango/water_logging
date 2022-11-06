@@ -29,8 +29,9 @@ class VisualizeWaterIntakeViewController: UIViewController {
     private func setUp() {
         // Get the water intake and water goal amounts from NSUserDefaults for the tracking label
         let defaults = UserDefaults.standard
+        let waterIntake = defaults.integer(forKey: "waterIntake")
         let waterGoal = defaults.integer(forKey: "waterGoal")
-        trackingLabel.text = "X oz of " + String(waterGoal) + " oz goal consumed today"
+        trackingLabel.text = String(waterIntake) + " oz of " + String(waterGoal) + " oz goal consumed today"
         
         trackingLabel.textColor = .label
         view.backgroundColor = .systemBackground
