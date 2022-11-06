@@ -25,9 +25,6 @@ class TrackWaterViewController: UIViewController {
     
     private func setUp() {
         // Set water intake and water goal amounts in NSUserDefaults
-        defaults.set(64, forKey: "waterGoal")
-        defaults.set(0, forKey: "waterIntake")
-        
         addWaterButton.setTitle("Add 8 oz Water", for: .normal)
         updateGoalButton.setTitle("Update Daily Goal", for: .normal)
         addWaterButton.addTarget(self, action: #selector(addWaterButtonPressed), for: .touchUpInside)

@@ -16,6 +16,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
+        let defaults = UserDefaults.standard
+        defaults.set(64, forKey: "waterGoal")
+        defaults.set(0, forKey: "waterIntake")
+        
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.rootViewController = UINavigationController(rootViewController: AppTabBarController())
         window?.makeKeyAndVisible()
