@@ -10,6 +10,7 @@ class TrackWaterViewController: UIViewController {
     
     private let addWaterButton = UIButton()
     private let updateGoalButton = UIButton()
+    let defaults = UserDefaults.standard
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
@@ -24,7 +25,6 @@ class TrackWaterViewController: UIViewController {
     
     private func setUp() {
         // Set water intake and water goal amounts in NSUserDefaults
-        let defaults = UserDefaults.standard
         defaults.set(64, forKey: "waterGoal")
         defaults.set(0, forKey: "waterIntake")
         
@@ -81,6 +81,10 @@ class TrackWaterViewController: UIViewController {
     
     @objc private func addWaterButtonPressed() {
         print("Add water button pressed")
+        var waterIntake = defaults.integer(forKey: "waterIntake")
+        waterIntake += 8
+        defaults.set(waterIntake, forKey: "waterIntake")
+        print(waterIntake)
     }
     
     @objc private func goalButtonPressed() {

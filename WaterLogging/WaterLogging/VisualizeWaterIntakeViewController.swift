@@ -9,6 +9,7 @@ import UIKit
 class VisualizeWaterIntakeViewController: UIViewController {
 
     private let trackingLabel = UILabel()
+    let defaults = UserDefaults.standard
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
@@ -19,16 +20,20 @@ class VisualizeWaterIntakeViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
+        setUp()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        // Do any additional setup after loading the view
     }
     
     // Set Up
 
     private func setUp() {
         // Get the water intake and water goal amounts from NSUserDefaults for the tracking label
-        let defaults = UserDefaults.standard
         let waterIntake = defaults.integer(forKey: "waterIntake")
         let waterGoal = defaults.integer(forKey: "waterGoal")
         trackingLabel.text = String(waterIntake) + " oz of " + String(waterGoal) + " oz goal consumed today"
