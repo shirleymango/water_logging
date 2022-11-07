@@ -12,7 +12,8 @@ class TrackWaterViewController: UIViewController, UIPickerViewDelegate, UIPicker
     private let addWaterButton = UIButton()
     private let updateGoalButton = UIButton()
     private let updateGoalDropdown = UIPickerView()
-    let list = [1, 2, 3]
+    var list = [Int]()
+    
     let defaults = UserDefaults.standard
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
@@ -23,6 +24,7 @@ class TrackWaterViewController: UIViewController, UIPickerViewDelegate, UIPicker
         super.viewDidLoad()
         updateGoalDropdown.delegate = self
         updateGoalDropdown.dataSource = self
+        updateGoalDropdown.selectRow(63, inComponent: 0, animated: true)
     }
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -31,6 +33,9 @@ class TrackWaterViewController: UIViewController, UIPickerViewDelegate, UIPicker
     // Set Up
     
     private func setUp() {
+        for i in 1 ... 200 {
+        list.append(i)
+        }
         let waterGoal = defaults.integer(forKey: "waterGoal")
         addWaterButton.setTitle("Add 8 oz Water", for: .normal)
         updateGoalButton.setTitle("Daily Goal: " + String(waterGoal), for: .normal)
@@ -115,6 +120,7 @@ class TrackWaterViewController: UIViewController, UIPickerViewDelegate, UIPicker
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        self.view.endEditing(true)
         return String(list[row])
     }
     
