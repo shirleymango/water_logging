@@ -35,14 +35,19 @@ class TrackWaterViewController: UIViewController, UIPickerViewDelegate, UIPicker
         list.append(i)
         }
     }
+    
+    // Update Goal Text
+    private func updateGoalText(amount: Int) {
+        updateGoalButton.setTitle("Daily Goal: " + String(amount) + " oz", for: .normal)
+    }
 
     // Set Up
     
     private func setUp() {
         populateArray()
-        let waterGoal = defaults.integer(forKey: "waterGoal")
         addWaterButton.setTitle("Add 8 oz Water", for: .normal)
-        updateGoalButton.setTitle("Daily Goal: " + String(waterGoal), for: .normal)
+        let waterGoal = defaults.integer(forKey: "waterGoal")
+        updateGoalText(amount: waterGoal)
         addWaterButton.addTarget(self, action: #selector(addWaterButtonPressed), for: .touchUpInside)
         updateGoalButton.addTarget(self, action: #selector(goalButtonPressed), for: .touchUpInside)
         
@@ -130,7 +135,7 @@ class TrackWaterViewController: UIViewController, UIPickerViewDelegate, UIPicker
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         defaults.setValue(row+1, forKey: "waterGoal")
-        updateGoalButton.setTitle("Daily Goal: " + String(row+1), for: .normal)
+        updateGoalText(amount: row+1)
         updateGoalDropdown.isHidden = true;
     }
     
