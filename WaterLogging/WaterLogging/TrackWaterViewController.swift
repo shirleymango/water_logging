@@ -65,12 +65,15 @@ class TrackWaterViewController: UIViewController, UIPickerViewDelegate, UIPicker
         
         let updateGoalButtonConstraints = [updateGoalButton.topAnchor.constraint(equalTo: addWaterButton.bottomAnchor, constant: 10),
                                            updateGoalButton.leadingAnchor.constraint(equalTo: container.leadingAnchor),
-                                           updateGoalButton.trailingAnchor.constraint(equalTo: container.trailingAnchor),
-                                           updateGoalButton.bottomAnchor.constraint(equalTo: container.bottomAnchor)]
+                                           updateGoalButton.trailingAnchor.constraint(equalTo: container.trailingAnchor)]
         
         NSLayoutConstraint.activate(updateGoalButtonConstraints)
         
-        let updateGoalDropdownConstraints = [updateGoalDropdown.centerXAnchor.constraint(equalTo: self.view.centerXAnchor)]
+        let updateGoalDropdownConstraints = [updateGoalDropdown.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
+                                             updateGoalDropdown.leadingAnchor.constraint(equalTo: container.leadingAnchor),
+                                             updateGoalDropdown.trailingAnchor.constraint(equalTo: container.trailingAnchor),
+                                             updateGoalDropdown.bottomAnchor.constraint(equalTo: container.bottomAnchor)]
+        
 
         NSLayoutConstraint.activate(updateGoalDropdownConstraints)
         
