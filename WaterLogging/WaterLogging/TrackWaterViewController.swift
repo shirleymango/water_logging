@@ -129,6 +129,7 @@ class TrackWaterViewController: UIViewController, UIPickerViewDelegate, UIPicker
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        defaults.setValue(row+1, forKey: "waterGoal")
         updateGoalButton.setTitle("Daily Goal: " + String(row+1), for: .normal)
         updateGoalDropdown.isHidden = true;
     }
