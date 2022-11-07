@@ -22,7 +22,7 @@ class VisualizeWaterIntakeViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
-        setUp()
+        updateLabel()
     }
     
     override func viewDidLoad() {
@@ -30,14 +30,16 @@ class VisualizeWaterIntakeViewController: UIViewController {
         // Do any additional setup after loading the view
     }
     
-    // Set Up
-
-    private func setUp() {
-        // Get the water intake and water goal amounts from NSUserDefaults for the tracking label
+    // Update
+    private func updateLabel() {
         let waterIntake = defaults.integer(forKey: "waterIntake")
         let waterGoal = defaults.integer(forKey: "waterGoal")
         trackingLabel.text = String(waterIntake) + " oz of " + String(waterGoal) + " oz goal consumed today"
-        
+    }
+    
+    // Set Up
+    private func setUp() {
+        updateLabel()
         trackingLabel.textColor = .label
         view.backgroundColor = .systemBackground
         
