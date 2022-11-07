@@ -29,13 +29,17 @@ class TrackWaterViewController: UIViewController, UIPickerViewDelegate, UIPicker
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    private func populateArray() {
+        for i in 1 ... 200 {
+        list.append(i)
+        }
+    }
 
     // Set Up
     
     private func setUp() {
-        for i in 1 ... 200 {
-        list.append(i)
-        }
+        populateArray()
         let waterGoal = defaults.integer(forKey: "waterGoal")
         addWaterButton.setTitle("Add 8 oz Water", for: .normal)
         updateGoalButton.setTitle("Daily Goal: " + String(waterGoal), for: .normal)
