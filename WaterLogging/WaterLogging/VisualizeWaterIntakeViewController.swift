@@ -5,10 +5,12 @@
 //
 
 import UIKit
+import Charts
 
 class VisualizeWaterIntakeViewController: UIViewController {
 
     private let trackingLabel = UILabel()
+    
     let defaults = UserDefaults.standard
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
@@ -23,11 +25,13 @@ class VisualizeWaterIntakeViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
         updateLabel()
+        createChart()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view
+        createChart()
     }
     
     // Update
@@ -43,7 +47,7 @@ class VisualizeWaterIntakeViewController: UIViewController {
         trackingLabel.textColor = .label
         view.backgroundColor = .systemBackground
         
-        setUpConstraints()
+//        setUpConstraints()
     }
     
     private func setUpConstraints() {
@@ -56,11 +60,31 @@ class VisualizeWaterIntakeViewController: UIViewController {
                                     trackingLabel.centerYAnchor.constraint(equalTo: self.view.centerYAnchor),
                                     trackingLabel.topAnchor.constraint(greaterThanOrEqualTo: self.view.topAnchor),
                                     trackingLabel.leadingAnchor.constraint(greaterThanOrEqualTo: self.view.leadingAnchor),
-                                    trackingLabel.trailingAnchor.constraint(lessThanOrEqualTo: self.view.trailingAnchor),
-                                    trackingLabel.bottomAnchor.constraint(lessThanOrEqualTo: self.view.bottomAnchor)]
+                                    trackingLabel.trailingAnchor.constraint(lessThanOrEqualTo: self.view.trailingAnchor)]
         
         NSLayoutConstraint.activate(trackingLabelConstraints)
         
+//        let chartConstraints = [barChart.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
+//                                barChart.bottomAnchor.constraint(equalTo: self.view.bottomAnchor)]
+//
+//        NSLayoutConstraint.activate(chartConstraints)
+        
+    }
+    private func createChart() {
+        // Create chart
+        let barChart = BarChartView(frame: CGRect(x: 0, y: 0, width: view.frame.size.width/2, height: view.frame.size.width))
+        // Configure axis
+        
+        // Supply data
+        let waterIntake = self.defaults.integer(forKey: "waterIntake")
+        let waterGoal = self.defaults.integer(forKey: "waterGoal")
+        let entries = [BarChartDataEntry(x: 0, yValues: [Double(waterIntake), Double(waterGoal-waterIntake)])]
+        let set = BarChartDataSet(entries: entries, label: "Water Intake")
+        set.colors = ChartColorTemplates.colorful()
+        let data = BarChartData(dataSet: set)
+        barChart.data = data
+        view.addSubview(barChart)
+        barChart.center = view.center
     }
 }
 
