@@ -48,7 +48,7 @@ class VisualizeWaterIntakeViewController: UIViewController {
         trackingLabel.textColor = .label
         view.backgroundColor = .systemBackground
         
-//        setUpConstraints()
+        setUpConstraints()
     }
     
     private func setUpConstraints() {
@@ -58,7 +58,7 @@ class VisualizeWaterIntakeViewController: UIViewController {
         // Label constraints
         
         let trackingLabelConstraints = [trackingLabel.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
-                                    trackingLabel.centerYAnchor.constraint(equalTo: self.view.centerYAnchor),
+                                    trackingLabel.centerYAnchor.constraint(equalTo: self.view.centerYAnchor, constant: -250),
                                     trackingLabel.topAnchor.constraint(greaterThanOrEqualTo: self.view.topAnchor),
                                     trackingLabel.leadingAnchor.constraint(greaterThanOrEqualTo: self.view.leadingAnchor),
                                     trackingLabel.trailingAnchor.constraint(lessThanOrEqualTo: self.view.trailingAnchor)]
@@ -84,8 +84,7 @@ class VisualizeWaterIntakeViewController: UIViewController {
         let waterIntake = self.defaults.integer(forKey: "waterIntake")
         let waterGoal = self.defaults.integer(forKey: "waterGoal")
         let entries = [BarChartDataEntry(x: 0, yValues: [Double(waterIntake), Double(waterGoal-waterIntake)])]
-        let labelText = String(waterIntake) + " oz of " + String(waterGoal) + " oz goal consumed"
-        let set = BarChartDataSet(entries: entries, label: labelText)
+        let set = BarChartDataSet(entries: entries, label: "")
         set.colors = [NSUIColor(ciColor: CIColor(color: UIColor(red: 30/255.0, green: 159/255.0, blue: 249/255.0, alpha: 1))), NSUIColor(ciColor: CIColor(color: UIColor.darkGray))]
         let data = BarChartData(dataSet: set)
         barChart.data = data
