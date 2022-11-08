@@ -91,7 +91,10 @@ class VisualizeWaterIntakeViewController: UIViewController {
     // Update Chart
     private func updateChart() {
         updateValues()
-        let entries = [BarChartDataEntry(x: 0, yValues: [Double(waterIntake), Double(waterGoal-waterIntake)])]
+        var entries = [BarChartDataEntry(x: 0, yValues: [Double(waterIntake), Double(waterGoal-waterIntake)])]
+        if (waterIntake >= waterGoal) {
+            entries = [BarChartDataEntry(x: 0, yValues: [Double(waterIntake), Double(0)])]
+        }
         let set = BarChartDataSet(entries: entries, label: "")
         set.colors = [NSUIColor(ciColor: CIColor(color: UIColor(red: 30/255.0, green: 159/255.0, blue: 249/255.0, alpha: 1))), NSUIColor(ciColor: CIColor(color: UIColor.darkGray))]
         let data = BarChartData(dataSet: set)
