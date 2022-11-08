@@ -74,6 +74,8 @@ class VisualizeWaterIntakeViewController: UIViewController {
         // Create chart
         let barChart = BarChartView(frame: CGRect(x: 0, y: 0, width: view.frame.size.width/2, height: view.frame.size.width))
         // Configure axis
+        barChart.xAxis.enabled = false
+        barChart.rightAxis.enabled = false
         
         // Supply data
         let waterIntake = self.defaults.integer(forKey: "waterIntake")
