@@ -11,6 +11,8 @@ class VisualizeWaterIntakeViewController: UIViewController {
 
     private let trackingLabel = UILabel()
     private let barChart = BarChartView()
+    var waterIntake = 0;
+    var waterGoal = 0;
     
     let defaults = UserDefaults.standard
     
@@ -35,12 +37,13 @@ class VisualizeWaterIntakeViewController: UIViewController {
     }
     
     
-    // Set Up
+    // Set up
     private func setUp() {
         setUpLabel()
         setUpChart()
     }
     
+    // Set up label
     private func setUpLabel() {
         updateLabel()
         trackingLabel.textColor = .label
@@ -63,6 +66,8 @@ class VisualizeWaterIntakeViewController: UIViewController {
         NSLayoutConstraint.activate(trackingLabelConstraints)
         
     }
+    
+    // Set up chart
     private func setUpChart() {
         // Configure chart
         barChart.frame = CGRect(x: 0, y: 0, width: view.frame.size.width/2, height: view.frame.size.width)
@@ -79,19 +84,23 @@ class VisualizeWaterIntakeViewController: UIViewController {
     
     // Update Label
     private func updateLabel() {
-        let waterIntake = defaults.integer(forKey: "waterIntake")
-        let waterGoal = defaults.integer(forKey: "waterGoal")
+        updateValues()
         trackingLabel.text = String(waterIntake) + " oz of " + String(waterGoal) + " oz goal consumed today"
     }
     
+    // Update Chart
     private func updateChart() {
-        let waterIntake = self.defaults.integer(forKey: "waterIntake")
-        let waterGoal = self.defaults.integer(forKey: "waterGoal")
+        updateValues()
         let entries = [BarChartDataEntry(x: 0, yValues: [Double(waterIntake), Double(waterGoal-waterIntake)])]
         let set = BarChartDataSet(entries: entries, label: "")
         set.colors = [NSUIColor(ciColor: CIColor(color: UIColor(red: 30/255.0, green: 159/255.0, blue: 249/255.0, alpha: 1))), NSUIColor(ciColor: CIColor(color: UIColor.darkGray))]
         let data = BarChartData(dataSet: set)
         barChart.data = data
+    }
+    
+    private func updateValues() {
+        waterIntake = self.defaults.integer(forKey: "waterIntake")
+        waterGoal = self.defaults.integer(forKey: "waterGoal")
     }
 }
 
