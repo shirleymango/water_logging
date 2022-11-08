@@ -65,11 +65,6 @@ class VisualizeWaterIntakeViewController: UIViewController {
         
         NSLayoutConstraint.activate(trackingLabelConstraints)
         
-//        let chartConstraints = [barChart.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
-//                                barChart.bottomAnchor.constraint(equalTo: self.view.bottomAnchor)]
-//
-//        NSLayoutConstraint.activate(chartConstraints)
-        
     }
     private func createChart() {
         // Configure chart
