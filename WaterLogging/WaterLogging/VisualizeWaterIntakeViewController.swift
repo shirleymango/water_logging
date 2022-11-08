@@ -32,26 +32,23 @@ class VisualizeWaterIntakeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view
-        createChart()
     }
     
-    // Update
-    private func updateLabel() {
-        let waterIntake = defaults.integer(forKey: "waterIntake")
-        let waterGoal = defaults.integer(forKey: "waterGoal")
-        trackingLabel.text = String(waterIntake) + " oz of " + String(waterGoal) + " oz goal consumed today"
-    }
     
     // Set Up
     private func setUp() {
+        setUpLabel()
+        setUpChart()
+    }
+    
+    private func setUpLabel() {
         updateLabel()
         trackingLabel.textColor = .label
         view.backgroundColor = .systemBackground
-        
-        setUpConstraints()
+        setUpLabelConstraints()
     }
     
-    private func setUpConstraints() {
+    private func setUpLabelConstraints() {
         trackingLabel.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(trackingLabel)
         
@@ -66,7 +63,7 @@ class VisualizeWaterIntakeViewController: UIViewController {
         NSLayoutConstraint.activate(trackingLabelConstraints)
         
     }
-    private func createChart() {
+    private func setUpChart() {
         // Configure chart
         barChart.frame = CGRect(x: 0, y: 0, width: view.frame.size.width/2, height: view.frame.size.width)
         
@@ -78,6 +75,13 @@ class VisualizeWaterIntakeViewController: UIViewController {
         updateChart()
         view.addSubview(barChart)
         barChart.center = view.center
+    }
+    
+    // Update Label
+    private func updateLabel() {
+        let waterIntake = defaults.integer(forKey: "waterIntake")
+        let waterGoal = defaults.integer(forKey: "waterGoal")
+        trackingLabel.text = String(waterIntake) + " oz of " + String(waterGoal) + " oz goal consumed today"
     }
     
     private func updateChart() {
