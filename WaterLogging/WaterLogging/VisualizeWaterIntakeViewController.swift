@@ -10,6 +10,7 @@ import Charts
 class VisualizeWaterIntakeViewController: UIViewController {
 
     private let trackingLabel = UILabel()
+    private let barChart = BarChartView()
     
     let defaults = UserDefaults.standard
     
@@ -25,7 +26,7 @@ class VisualizeWaterIntakeViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
         updateLabel()
-        createChart()
+        updateChart()
     }
     
     override func viewDidLoad() {
@@ -71,22 +72,28 @@ class VisualizeWaterIntakeViewController: UIViewController {
         
     }
     private func createChart() {
-        // Create chart
-        let barChart = BarChartView(frame: CGRect(x: 0, y: 0, width: view.frame.size.width/2, height: view.frame.size.width))
+        // Configure chart
+        barChart.frame = CGRect(x: 0, y: 0, width: view.frame.size.width/2, height: view.frame.size.width)
+        
         // Configure axis
         barChart.xAxis.enabled = false
         barChart.rightAxis.enabled = false
         
         // Supply data
+        updateChart()
+        view.addSubview(barChart)
+        barChart.center = view.center
+    }
+    
+    private func updateChart() {
         let waterIntake = self.defaults.integer(forKey: "waterIntake")
         let waterGoal = self.defaults.integer(forKey: "waterGoal")
         let entries = [BarChartDataEntry(x: 0, yValues: [Double(waterIntake), Double(waterGoal-waterIntake)])]
-        let set = BarChartDataSet(entries: entries, label: "Water Intake")
+        let labelText = String(waterIntake) + " oz of " + String(waterGoal) + " oz goal consumed"
+        let set = BarChartDataSet(entries: entries, label: labelText)
         set.colors = ChartColorTemplates.colorful()
         let data = BarChartData(dataSet: set)
         barChart.data = data
-        view.addSubview(barChart)
-        barChart.center = view.center
     }
 }
 
