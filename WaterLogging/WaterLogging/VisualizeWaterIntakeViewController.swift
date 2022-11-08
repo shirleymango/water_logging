@@ -91,7 +91,7 @@ class VisualizeWaterIntakeViewController: UIViewController {
         let entries = [BarChartDataEntry(x: 0, yValues: [Double(waterIntake), Double(waterGoal-waterIntake)])]
         let labelText = String(waterIntake) + " oz of " + String(waterGoal) + " oz goal consumed"
         let set = BarChartDataSet(entries: entries, label: labelText)
-        set.colors = ChartColorTemplates.colorful()
+        set.colors = [NSUIColor(ciColor: CIColor(color: UIColor(red: 30/255.0, green: 159/255.0, blue: 249/255.0, alpha: 1))), NSUIColor(ciColor: CIColor(color: UIColor.darkGray))]
         let data = BarChartData(dataSet: set)
         barChart.data = data
     }
