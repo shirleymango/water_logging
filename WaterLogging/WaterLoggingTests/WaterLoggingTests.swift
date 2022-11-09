@@ -23,6 +23,13 @@ class WaterLoggingTests: XCTestCase {
         // This is an example of a functional test case.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
     }
+    
+    func testInitialValues() {
+        let sut = VisualizeWaterIntakeViewController()
+        _ = sut.view
+        XCTAssertEqual(sut.waterGoal, 64)
+        XCTAssertEqual(sut.waterIntake, 0)
+    }
 
     func testPerformanceExample() throws {
         // This is an example of a performance test case.
