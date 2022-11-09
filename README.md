@@ -12,3 +12,6 @@
 I created a visualization for the water intake compared to the goal. Visualizations appeal greatly to users. Having a graph will make the information easier to digest for the user. If the user can better understand the information provided by the app, then the user will be more likley to use the app.
 
 I also added an image of a cheering cartoon lion to appear when the user reached or surpassed their goal. This gamification element will motivate the user to reach their daily goal.
+
+## Additional Documentation:
+Additional documentation of my coding and learning process during this deliverable can be found here: https://docs.google.com/document/d/1QHea9oP_FvcaRzKUbuvxgGhTd3dyNZNpxg6EDvUGtUk/edit?usp=sharing. :)
