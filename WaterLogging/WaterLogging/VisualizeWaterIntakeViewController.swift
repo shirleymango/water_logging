@@ -29,10 +29,7 @@ class VisualizeWaterIntakeViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
-        updateValues()
-        updateLabel()
-        updateChart()
-        updateImage()
+        update()
     }
     
     override func viewDidLoad() {
@@ -43,18 +40,9 @@ class VisualizeWaterIntakeViewController: UIViewController {
     
     // Set up
     private func setUp() {
-        setUpImage()
         setUpLabel()
         setUpChart()
-    }
-    
-    // Set up congrats image
-    private func setUpImage() {
-        image = UIImage(named: "congrats.jpeg")!
-        imageView = UIImageView(image: image)
-        imageView.frame = CGRect(x: self.view.center.x-52.5, y: self.view.center.y+225, width: 105, height: 115)
-        view.addSubview(imageView)
-        imageView.isHidden = true
+        setUpImage()
     }
     
     // Set up label
@@ -96,6 +84,29 @@ class VisualizeWaterIntakeViewController: UIViewController {
         barChart.center = view.center
     }
     
+    // Set up congrats image
+    private func setUpImage() {
+        image = UIImage(named: "congrats.jpeg")!
+        imageView = UIImageView(image: image)
+        imageView.frame = CGRect(x: self.view.center.x-52.5, y: self.view.center.y+225, width: 105, height: 115)
+        view.addSubview(imageView)
+        imageView.isHidden = true
+    }
+    
+    // Update
+    private func update() {
+        updateValues()
+        updateLabel()
+        updateChart()
+        updateImage()
+    }
+    
+    // Update values
+    private func updateValues() {
+        waterIntake = self.defaults.integer(forKey: "waterIntake")
+        waterGoal = self.defaults.integer(forKey: "waterGoal")
+    }
+    
     // Update Label
     private func updateLabel() {
         trackingLabel.text = String(waterIntake) + " oz of " + String(waterGoal) + " oz goal consumed today"
@@ -111,12 +122,6 @@ class VisualizeWaterIntakeViewController: UIViewController {
         set.colors = [NSUIColor(ciColor: CIColor(color: UIColor(red: 30/255.0, green: 159/255.0, blue: 249/255.0, alpha: 1))), NSUIColor(ciColor: CIColor(color: UIColor.darkGray))]
         let data = BarChartData(dataSet: set)
         barChart.data = data
-    }
-    
-    // Update values
-    private func updateValues() {
-        waterIntake = self.defaults.integer(forKey: "waterIntake")
-        waterGoal = self.defaults.integer(forKey: "waterGoal")
     }
     
     // Update image
