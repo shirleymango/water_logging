@@ -9,8 +9,8 @@ import Charts
 
 class VisualizeWaterIntakeViewController: UIViewController {
 
-    private let trackingLabel = UILabel()
-    private let barChart = BarChartView()
+    let trackingLabel = UILabel()
+    let barChart = BarChartView()
     var imageView = UIImageView()
     var waterIntake = 0;
     var waterGoal = 0;
@@ -39,6 +39,7 @@ class VisualizeWaterIntakeViewController: UIViewController {
     
     // Set up
     private func setUp() {
+        updateValues()
         setUpLabel()
         setUpChart()
         setUpImage()
