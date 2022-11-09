@@ -10,7 +10,7 @@ import XCTest
 @testable import WaterLogging
 
 class WaterLoggingTests: XCTestCase {
-
+    
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.
     }
@@ -22,13 +22,6 @@ class WaterLoggingTests: XCTestCase {
     func testExample() throws {
         // This is an example of a functional test case.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
-    }
-    
-    func testInitialValues() {
-        let sut = VisualizeWaterIntakeViewController()
-        _ = sut.view
-        XCTAssertEqual(sut.waterGoal, 64)
-        XCTAssertEqual(sut.waterIntake, 0)
     }
 
     func testPerformanceExample() throws {
