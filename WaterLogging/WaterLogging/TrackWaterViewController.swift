@@ -9,7 +9,7 @@ import UIKit
 class TrackWaterViewController: UIViewController, UIPickerViewDelegate, UIPickerViewDataSource {
     
     
-    private let addWaterButton = UIButton()
+    let addWaterButton = UIButton()
     private let updateGoalButton = UIButton()
     private let updateGoalDropdown = UIPickerView()
     var list = [Int]()
