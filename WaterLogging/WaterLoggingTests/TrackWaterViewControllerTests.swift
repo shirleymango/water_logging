@@ -27,8 +27,9 @@ class TrackWaterViewControllerTests: XCTestCase {
         XCTAssertEqual(sut.defaults.integer(forKey: "waterIntake"), 0)
     }
     
-    func testUpdateIntake() {
-        
+    func testUpdateIntakeValue() {
+        sut.addWaterButton.sendActions(for: .touchUpInside)
+        XCTAssertEqual(sut.defaults.integer(forKey: "waterIntake"), 8)
     }
 
 }
