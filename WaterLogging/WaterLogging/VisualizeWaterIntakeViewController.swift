@@ -11,6 +11,7 @@ class VisualizeWaterIntakeViewController: UIViewController {
 
     private let trackingLabel = UILabel()
     private let barChart = BarChartView()
+    var imageView = UIImageView()
     var waterIntake = 0;
     var waterGoal = 0;
     
@@ -27,8 +28,7 @@ class VisualizeWaterIntakeViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
-        updateLabel()
-        updateChart()
+        update()
     }
     
     override func viewDidLoad() {
@@ -41,6 +41,7 @@ class VisualizeWaterIntakeViewController: UIViewController {
     private func setUp() {
         setUpLabel()
         setUpChart()
+        setUpImage()
     }
     
     // Set up label
@@ -82,15 +83,36 @@ class VisualizeWaterIntakeViewController: UIViewController {
         barChart.center = view.center
     }
     
+    // Set up congrats image
+    private func setUpImage() {
+        let image = UIImage(named: "congrats.jpeg")!
+        imageView = UIImageView(image: image)
+        imageView.frame = CGRect(x: self.view.center.x-52.5, y: self.view.center.y+225, width: 105, height: 115)
+        view.addSubview(imageView)
+        imageView.isHidden = true
+    }
+    
+    // Update
+    private func update() {
+        updateValues()
+        updateLabel()
+        updateChart()
+        updateImage()
+    }
+    
+    // Update values
+    private func updateValues() {
+        waterIntake = self.defaults.integer(forKey: "waterIntake")
+        waterGoal = self.defaults.integer(forKey: "waterGoal")
+    }
+    
     // Update Label
     private func updateLabel() {
-        updateValues()
         trackingLabel.text = String(waterIntake) + " oz of " + String(waterGoal) + " oz goal consumed today"
     }
     
     // Update Chart
     private func updateChart() {
-        updateValues()
         var entries = [BarChartDataEntry(x: 0, yValues: [Double(waterIntake), Double(waterGoal-waterIntake)])]
         if (waterIntake >= waterGoal) {
             entries = [BarChartDataEntry(x: 0, yValues: [Double(waterIntake), Double(0)])]
@@ -101,9 +123,13 @@ class VisualizeWaterIntakeViewController: UIViewController {
         barChart.data = data
     }
     
-    private func updateValues() {
-        waterIntake = self.defaults.integer(forKey: "waterIntake")
-        waterGoal = self.defaults.integer(forKey: "waterGoal")
+    // Update image
+    private func updateImage() {
+        if (waterIntake >= waterGoal) {
+            imageView.isHidden = false
+        } else {
+            imageView.isHidden = true
+        }
     }
 }
 
