@@ -11,7 +11,6 @@ class VisualizeWaterIntakeViewController: UIViewController {
 
     private let trackingLabel = UILabel()
     private let barChart = BarChartView()
-    var image = UIImage()
     var imageView = UIImageView()
     var waterIntake = 0;
     var waterGoal = 0;
@@ -86,7 +85,7 @@ class VisualizeWaterIntakeViewController: UIViewController {
     
     // Set up congrats image
     private func setUpImage() {
-        image = UIImage(named: "congrats.jpeg")!
+        let image = UIImage(named: "congrats.jpeg")!
         imageView = UIImageView(image: image)
         imageView.frame = CGRect(x: self.view.center.x-52.5, y: self.view.center.y+225, width: 105, height: 115)
         view.addSubview(imageView)
