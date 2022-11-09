@@ -20,6 +20,7 @@
 		B31AA1EF24734EE8007708F4 /* VisualizeWaterIntakeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B31AA1EE24734EE8007708F4 /* VisualizeWaterIntakeViewController.swift */; };
 		B31AA1F124734F10007708F4 /* AppTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B31AA1F024734F10007708F4 /* AppTabBarController.swift */; };
 		EEA9B8E2291B9B7E0067176B /* VisualizeWaterIntakeViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEA9B8E1291B9B7E0067176B /* VisualizeWaterIntakeViewControllerTests.swift */; };
+		EEA9B8E6291B9C010067176B /* TrackWaterViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EEA9B8E5291B9C010067176B /* TrackWaterViewControllerTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,6 +55,7 @@
 		D31084CFBF4FEB63594909D6 /* Pods-WaterLogging.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WaterLogging.debug.xcconfig"; path = "Target Support Files/Pods-WaterLogging/Pods-WaterLogging.debug.xcconfig"; sourceTree = "<group>"; };
 		DC811A829E99D392CBE4360A /* Pods-WaterLogging.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WaterLogging.release.xcconfig"; path = "Target Support Files/Pods-WaterLogging/Pods-WaterLogging.release.xcconfig"; sourceTree = "<group>"; };
 		EEA9B8E1291B9B7E0067176B /* VisualizeWaterIntakeViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisualizeWaterIntakeViewControllerTests.swift; sourceTree = "<group>"; };
+		EEA9B8E5291B9C010067176B /* TrackWaterViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackWaterViewControllerTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -130,6 +132,7 @@
 				B31AA1E124734EAC007708F4 /* WaterLoggingTests.swift */,
 				B31AA1E324734EAC007708F4 /* Info.plist */,
 				EEA9B8E1291B9B7E0067176B /* VisualizeWaterIntakeViewControllerTests.swift */,
+				EEA9B8E5291B9C010067176B /* TrackWaterViewControllerTests.swift */,
 			);
 			path = WaterLoggingTests;
 			sourceTree = "<group>";
@@ -324,6 +327,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EEA9B8E6291B9C010067176B /* TrackWaterViewControllerTests.swift in Sources */,
 				B31AA1E224734EAC007708F4 /* WaterLoggingTests.swift in Sources */,
 				EEA9B8E2291B9B7E0067176B /* VisualizeWaterIntakeViewControllerTests.swift in Sources */,
 			);
