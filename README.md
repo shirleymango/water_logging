@@ -1,25 +1,14 @@
 # HealthInterviewTakeHomeProblem
-## Provided (in this repository):
-* Two tabs: Track | Visualize
-* Track: Add Water Button (Bar button item), Add Goal Button
-* Visualize: Placeholder box for visualization, Text Field “X oz /X oz goal consumed”
 
-### Two Tabs:
-![image info](./Documentation/track.png)
-![image info](./Documentation/viz.png)
+## Updated Tabs:
 
-## Minimum Submission Required:
-* Track today’s water intake
-* Display the total for the day
-* Write a Readme:
-	* What enhancement did you pick and why?
-	* Any other details you wish to share? (Testing details + SDK)
+### Track tab
+<img src="https://user-images.githubusercontent.com/44847817/200789291-6666591f-c248-4f0d-ba28-83b63341d977.png" height="800"> | <img src="https://user-images.githubusercontent.com/44847817/200789331-b07a1058-84c6-4289-9db5-ddcfdb6e9afb.png" height="800">
 
-## Pick 1 Enhancement:
-* Add a water intake goal and visualize progress
-* Calculate water intake goal based on user’s weight (read from HealthKit). This goal and progress should update when user’s weight updates. 
-* In Visualize tab, show a history of water intake on a day-to-day basis. 
-* Replace water logging with the ability to log drinks that have a certain % water. Use CoreData to model these beverages and keep track of water intake per day. No need to update visualization tab. 
-    * For example, if we assume coffee is 98% water, logging 100 ml of coffee would result in 98 ml of water consumed. For this enhancement we can estimate that tea is 100% water, coffee is 98%, and juice is about 85%.
-* Integrate with UserNotifications to remind a user to log water intake when they haven’t met their goal.
+### Visualize tab
+<img src="https://user-images.githubusercontent.com/44847817/200789366-134d197b-1147-4fda-9313-f6525a0d3b1b.png" height="800">
 
+## Enhancements:
+I created a visualization for the water intake compared to the goal. Visualizations appeal greatly to users. Having a graph will make the information easier to digest for the user. If the user can better understand the information provided by the app, then the user will be more likley to use the app.
+
+I also added an image of a cheering cartoon lion to appear when the user reached or surpassed their goal. This gamification element will motivate the user to reach their daily goal.
